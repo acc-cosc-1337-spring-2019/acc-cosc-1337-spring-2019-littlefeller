@@ -15,15 +15,15 @@ int main()
 
 	cout << "hours:";
 	cin >> hours;
-	cout << "hourly_rate:"
+	cout << "hourly_rate:";
 	cin >> hourly_rate;
 	//Prompt user for keyboard input for hours and hourly_rate
 	//save the input to variables hours and hourly_rate
 
-	double gross_salary
+	double gross_salary;
 		//Create a double variable named gross_salary
 
-	gross_salary = gross_pay(hours, hourly_rate)
+	gross_salary = gross_pay(hours, hourly_rate);
 	//Call the gross_pay function and save its return value to the gross_salary variable
 
 	cout << "Gross pay: " << gross_salary;
