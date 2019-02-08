@@ -1,3 +1,9 @@
+#include <iostream>
+
+using std::cin;
+using std::cout;
+
+
 /*
 WITH LOOP OF YOUR CHOICE:
 Write code for function factorial that accepts an int num
@@ -10,3 +16,13 @@ returns 120
 
 DON'T FORGET TO WRITE TEST CASE.  See file loop_test.cpp
 */
+int fac_func(int num)
+{
+	int fact = 1;
+	for (int i = 1; i <= num; i++)
+	{
+		fact *= i;
+	}
+	return fact;
+	
+}
