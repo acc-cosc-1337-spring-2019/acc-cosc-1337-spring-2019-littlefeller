@@ -19,4 +19,3 @@ TEST_CASE("name assign 1 function", "[150,100,200]") {
 	REQUIRE(gross_pay(5, 20) == 100);
 	REQUIRE(gross_pay(20, 10) == 200);
 }
-
