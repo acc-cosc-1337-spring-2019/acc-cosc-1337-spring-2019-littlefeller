@@ -16,5 +16,11 @@ Width	Height		Area
 */
 TEST_CASE("TESTING") 
 {
-	REQUIRE(return_val() == 1);
+	//Rectangle rect1(4, 5);
+	//Rectangle rect2(10, 10);
+	//Rectangle rect3(100, 10);
+	//REQUIRE(rect1.return_area() == 20);
+	//REQUIRE(rect2.return_area() == 100);
+	//REQUIRE(rect3.return_area() == 1000);
+
 }
