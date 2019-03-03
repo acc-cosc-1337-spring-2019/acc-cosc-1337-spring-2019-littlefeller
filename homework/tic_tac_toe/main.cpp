@@ -1,4 +1,5 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include<string>
 #include<iostream>
 using std::cout;
@@ -8,6 +9,8 @@ int main()
 {
 	
 	std::string play = "n";
+
+	TicTacToeManager g1;
 
 	do {
 		TicTacToe game1;
@@ -39,6 +42,8 @@ int main()
 			}
 		}
 		
+
+
 		cout << "\n";
 		cout << "Play again? (enter y to start another game) ";
 		cin >> play;

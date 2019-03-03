@@ -1,3 +1,8 @@
+
+#ifndef TIC_TAC_TOE_H
+#define TIC_TAC_TOE_H
+
+
 #include<string>
 #include<vector>
 
@@ -24,6 +29,12 @@ private:
 	void clear_board();
 	bool check_board_full();
 
+	void set_winner();
+	std::string get_winner();
+
+	std::string winner;
 	std::string next_player;
 	vector<string> pegs = {9, " "};
 };
+
+#endif // !TIC_TAC_TOE_H
