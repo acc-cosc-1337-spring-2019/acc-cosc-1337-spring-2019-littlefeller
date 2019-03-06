@@ -14,7 +14,7 @@ public:
 
 	TicTacToeManager() : x_win(0), o_win(0) { ties = 0;  }
 
-	void save_game(TicTacToe b) const;
+	void save_game(TicTacToe b);
 	void display_history() const;
 
 private:

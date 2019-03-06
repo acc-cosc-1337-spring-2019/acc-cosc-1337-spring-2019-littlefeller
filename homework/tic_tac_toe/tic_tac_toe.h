@@ -19,7 +19,7 @@ public:
 	bool game_over();
 	void mark_board(int postition);
 	void display_board() const;
-
+	std::string get_winner();
 
 private:
 	void set_next_player();
@@ -30,7 +30,7 @@ private:
 	bool check_board_full();
 
 	void set_winner();
-	std::string get_winner();
+	
 
 	std::string winner;
 	std::string next_player;

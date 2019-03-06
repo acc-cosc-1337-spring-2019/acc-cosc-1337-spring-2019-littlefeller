@@ -27,7 +27,7 @@ int main()
 			game1.display_board();
 			if (game1.game_over())
 			{
-				cout << "GAME OVER";
+				cout << "GAME OVER" << "\n";
 				break;
 			}
 
@@ -37,12 +37,13 @@ int main()
 			game1.display_board();
 			if (game1.game_over())
 			{
-				cout << "GAME OVER";
+				cout << "GAME OVER" << "\n";
 				break;
 			}
 		}
 		
-
+		g1.save_game(game1);
+		g1.display_history();
 
 		cout << "\n";
 		cout << "Play again? (enter y to start another game) ";
