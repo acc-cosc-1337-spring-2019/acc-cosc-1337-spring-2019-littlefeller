@@ -43,13 +43,16 @@ int main()
 		}
 		
 		g1.save_game(game1);
-		g1.display_history();
+		
 
 		cout << "\n";
 		cout << "Play again? (enter y to start another game) ";
 		cin >> play;
 
 	} while (play == "y");
+
+	cout << "History: \n";
+	g1.display_history();
 
 	return 0;
 }
