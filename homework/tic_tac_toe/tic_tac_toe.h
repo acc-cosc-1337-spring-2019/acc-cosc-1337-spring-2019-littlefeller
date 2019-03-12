@@ -2,7 +2,7 @@
 #ifndef TIC_TAC_TOE_H
 #define TIC_TAC_TOE_H
 
-
+#include<iostream>
 #include<string>
 #include<vector>
 
@@ -14,12 +14,20 @@ class TicTacToe
 {
 public:
 
+	
+
 	void start_game(std::string first_player);
 	std::string get_player() const;
 	bool game_over();
 	void mark_board(int postition);
-	void display_board() const;
+	//void display_board() const;
 	std::string get_winner();
+
+	friend std::istream & operator >> (std::istream & in,
+		const TicTacToe &t);
+
+	friend std::ostream & operator << (std::ostream & out,
+		const TicTacToe &t);
 
 private:
 	void set_next_player();

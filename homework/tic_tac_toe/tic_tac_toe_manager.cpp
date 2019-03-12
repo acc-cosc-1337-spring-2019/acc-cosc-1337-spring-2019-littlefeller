@@ -13,6 +13,7 @@ void TicTacToeManager::save_game(TicTacToe b)
 
 }
 
+/*
 void TicTacToeManager::display_history() const
 {
 	
@@ -26,7 +27,7 @@ void TicTacToeManager::display_history() const
 	cout << "O wins: " << o_win << "\n";
 	cout << "Ties: " << ties << "\n";
 }
-
+*/
 
 //priv
 

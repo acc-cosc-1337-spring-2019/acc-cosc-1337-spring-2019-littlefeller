@@ -37,13 +37,34 @@ void TicTacToe::mark_board(int position)
 
 }
 
+/*
 void TicTacToe::display_board() const
 {
 	cout << pegs[0] << "|" << pegs[1] << "|" << pegs[2] << "\n";
 	cout << pegs[3]<< "|" << pegs[4]<< "|" << pegs[5]<< "\n";
 	cout << pegs[6] << "|" << pegs[7] << "|" << pegs[8] << "\n";
 }
+*/
 
+std::istream & operator>>(std::istream & in, const TicTacToe & t)
+{
+
+	int x;
+	cout << "Enter position for X: ";
+	in >> x;
+
+	return in;
+}
+
+std::ostream & operator<<(std::ostream & out, const TicTacToe & t)
+{
+
+	out << t.pegs[0] << "|" << t.pegs[1] << "|" << t.pegs[2] << "\n";
+	out << t.pegs[3] << "|" << t.pegs[4] << "|" << t.pegs[5] << "\n";
+	out << t.pegs[6] << "|" << t.pegs[7] << "|" << t.pegs[8] << "\n";
+
+	return out;
+}
 
 
 
@@ -137,5 +158,4 @@ std::string TicTacToe::get_winner()
 {
 	return winner;
 }
-
 

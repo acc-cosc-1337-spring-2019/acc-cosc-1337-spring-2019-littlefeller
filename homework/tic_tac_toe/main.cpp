@@ -21,10 +21,12 @@ int main()
 		while (game1.game_over() != true)
 		{
 			
-			cout << "Enter position for X: ";
-			cin >> position1;
+			cin >> game1;
+
 			game1.mark_board(position1);
-			game1.display_board();
+
+			cout << game1;
+
 			if (game1.game_over())
 			{
 				cout << "GAME OVER" << "\n";
@@ -34,7 +36,7 @@ int main()
 			cout << "Enter position for O: ";
 			cin >> position1;
 			game1.mark_board(position1);
-			game1.display_board();
+			cout << game1;
 			if (game1.game_over())
 			{
 				cout << "GAME OVER" << "\n";
@@ -52,7 +54,8 @@ int main()
 	} while (play == "y");
 
 	cout << "History: \n";
-	g1.display_history();
+
+	//g1.display_history();
 
 	return 0;
 }
