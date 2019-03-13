@@ -46,12 +46,13 @@ void TicTacToe::display_board() const
 }
 */
 
-std::istream & operator>>(std::istream & in, const TicTacToe & t)
+std::istream & operator>>(std::istream & in, TicTacToe & t)
 {
 
 	int x;
-	cout << "Enter position for X: ";
+	cout << "Enter position for " << t.next_player << ": ";
 	in >> x;
+	t.mark_board(x);
 
 	return in;
 }

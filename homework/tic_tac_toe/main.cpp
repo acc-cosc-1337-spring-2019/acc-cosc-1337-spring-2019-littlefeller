@@ -16,14 +16,10 @@ int main()
 		TicTacToe game1;
 		game1.start_game("X");
 
-		int position1;
-
 		while (game1.game_over() != true)
 		{
 			
 			cin >> game1;
-
-			game1.mark_board(position1);
 
 			cout << game1;
 
@@ -33,10 +29,9 @@ int main()
 				break;
 			}
 
-			cout << "Enter position for O: ";
-			cin >> position1;
-			game1.mark_board(position1);
+			cin >> game1;
 			cout << game1;
+
 			if (game1.game_over())
 			{
 				cout << "GAME OVER" << "\n";
@@ -53,7 +48,7 @@ int main()
 
 	} while (play == "y");
 
-	cout << "History: \n";
+	cout << g1;
 
 	//g1.display_history();
 

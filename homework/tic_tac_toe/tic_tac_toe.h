@@ -23,8 +23,7 @@ public:
 	//void display_board() const;
 	std::string get_winner();
 
-	friend std::istream & operator >> (std::istream & in,
-		const TicTacToe &t);
+	friend std::istream & operator >> (std::istream & in, TicTacToe &t);
 
 	friend std::ostream & operator << (std::ostream & out,
 		const TicTacToe &t);

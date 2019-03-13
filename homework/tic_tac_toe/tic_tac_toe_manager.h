@@ -17,6 +17,9 @@ public:
 	void save_game(TicTacToe b);
 	//void display_history() const;
 
+	friend std::ostream & operator << (std::ostream & out,
+		const TicTacToeManager &t);
+
 private:
 	void update_winner_count(string winner);
 
