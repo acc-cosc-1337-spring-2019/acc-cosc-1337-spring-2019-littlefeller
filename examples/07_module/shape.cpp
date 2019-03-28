@@ -6,3 +6,5 @@ void Shape::draw()
 {
 	std::cout << "Draw Shape...\n";
 }
+
+//
