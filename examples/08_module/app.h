@@ -9,3 +9,5 @@ public:
 };
 
 #endif // ! APP_h
+
+//app >> entry class into thier library
