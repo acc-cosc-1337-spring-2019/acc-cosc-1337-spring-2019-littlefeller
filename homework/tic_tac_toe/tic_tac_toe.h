@@ -14,7 +14,7 @@ class TicTacToe
 {
 public:
 
-	
+	TicTacToe(int s) : pegs(s*s, " ") {}
 
 	void start_game(std::string first_player);
 	std::string get_player() const;
@@ -28,11 +28,15 @@ public:
 	friend std::ostream & operator << (std::ostream & out,
 		const TicTacToe &t);
 
+protected:
+
+	virtual bool check_column_win();
+	virtual bool check_row_win();
+	virtual bool check_diagonal_win();
+	vector<string> pegs;
+
 private:
 	void set_next_player();
-	bool check_column_win();
-	bool check_row_win();
-	bool check_diagonal_win();
 	void clear_board();
 	bool check_board_full();
 
@@ -41,7 +45,7 @@ private:
 
 	std::string winner;
 	std::string next_player;
-	vector<string> pegs = {9, " "};
+	
 };
 
 #endif // !TIC_TAC_TOE_H
