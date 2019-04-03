@@ -3,9 +3,9 @@
 
 bool TicTacToe4::check_column_win()
 {
-	for (std::size_t i = 0; i < 3; i++)
+	for (std::size_t i = 0; i < 4; i++)
 	{
-		if (pegs[i] == pegs[i + 3] && pegs[i + 3] == pegs[i + 6] && pegs[i + 6] != " ")
+		if (pegs[i] == pegs[i + 4] && pegs[i + 4] == pegs[i + 8] && pegs[i + 8] == pegs[i + 12] && pegs[i + 12] != " ")
 		{
 			return true;
 		}
@@ -16,9 +16,9 @@ bool TicTacToe4::check_column_win()
 
 bool TicTacToe4::check_row_win()
 {
-	for (std::size_t i = 0; i < 7; i += 3)
+	for (std::size_t i = 0; i < 13; i += 4)
 	{
-		if (pegs[i] == pegs[i + 1] && pegs[i + 1] == pegs[i + 2] && pegs[i + 2] != " ")
+		if (pegs[i] == pegs[i + 1] && pegs[i + 1] == pegs[i + 2] && pegs[i + 2] == pegs[i + 3] && pegs[i + 3] != " ")
 		{
 			return true;
 		}
@@ -30,11 +30,11 @@ bool TicTacToe4::check_row_win()
 
 bool TicTacToe4::check_diagonal_win()
 {
-	if (pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[8] != " ")
+	if (pegs[0] == pegs[5] && pegs[5] == pegs[10] && pegs[10] == pegs[15] && pegs[15] != " ")
 	{
 		return true;
 	}
-	if (pegs[2] == pegs[4] && pegs[4] == pegs[6] && pegs[6] != " ")
+	if (pegs[3] == pegs[6] && pegs[6] == pegs[9] && pegs[9] == pegs[12] && pegs[12] != " ")
 	{
 		return true;
 	}
