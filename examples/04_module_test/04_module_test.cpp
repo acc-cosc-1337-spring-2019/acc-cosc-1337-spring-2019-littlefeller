@@ -5,31 +5,29 @@
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
-
-TEST_CASE("test bank account init")
+TEST_CASE("test BankAccount initialization")
 {
-	BankAccount account(1, 100);
-
+	BankAccount account(1, 100);//instance of a class; create a variable 
 	REQUIRE(account.get_balance() == 100);
 }
+
 TEST_CASE("test bank account deposit")
 {
 	BankAccount account(1, 100);
 	account.deposit(25);
-
-	REQUIRE(account.get_balance == 125);
+	REQUIRE(account.get_balance() == 125);
 
 	account.deposit(-10);
-	REQUIRE(account.get_balance == 125);
-
+	REQUIRE(account.get_balance() == 125);
 }
 
 TEST_CASE("test bank account withdraw")
 {
 	BankAccount account(1, 100);
 	account.withdraw(25);
+	REQUIRE(account.get_balance() == 75);
 
-	REQUIRE(account.get_balance == 75);
+	account.withdraw(200);
+	REQUIRE(account.get_balance() == 75);
 
 }
-
