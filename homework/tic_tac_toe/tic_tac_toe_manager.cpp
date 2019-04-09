@@ -1,40 +1,61 @@
 #include "tic_tac_toe_manager.h"
-#include<iostream>
-using std::cout;
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
+
 //Write class function implementations here
 
-
-// pub
-
-void TicTacToeManager::save_game(TicTacToe b)
-{
-	games.push_back(b);
-	update_winner_count(b.get_winner());
-
+void TicTacToeManager::save_game(std::unique_ptr<TicTacToe>& game)
+{   
+	update_winner_count(game->get_winner());
+	games.push_back(std::move(game));
 }
 
-/*
-void TicTacToeManager::display_history() const
+std::unique_ptr<TicTacToe> TicTacToeManager::get_game(GameType game_type)
 {
-	
-	for (auto game : games)
+	if (game_type == GameType::three) 
 	{
-		game.display_board();
-		cout << "\n";
+		return std::make_unique<TicTacToe3>();
+	}
+	else 
+	{
+		return std::make_unique<TicTacToe4>();
 	}
 	
-	cout << "X wins: " << x_win << "\n";
-	cout << "O wins: " << o_win << "\n";
-	cout << "Ties: " << ties << "\n";
 }
-*/
+
+const std::vector<std::unique_ptr<TicTacToe>>& TicTacToeManager::get_games()
+{
+	return games;
+}
+
+void TicTacToeManager::update_winner_count(std::string winner)
+{
+	if (winner == "C") 
+	{
+		ties++;
+	}
+	else if (winner == "X") 
+	{
+		x_win++;
+	}
+	else if (winner == "O") 
+	{
+		o_win++;
+	}
+}
+
+void TicTacToeManager::get_winner_totals(int& x, int& o, int& c) 
+{
+	x = x_win;
+	o = o_win;
+	c = ties;
+}
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & t)
 {
-	for (auto game : t.games)
+	for (auto& game : t.games)
 	{
-		out << game;
-		out << "\n";
+		out << *game;
 	}
 
 	out << "X wins: " << t.x_win << "\n";
@@ -43,35 +64,3 @@ std::ostream & operator<<(std::ostream & out, const TicTacToeManager & t)
 
 	return out;
 }
-
-
-//priv
-
-const std::vector<std::unique_ptr<TicTacToe>>& TicTacToeManager::get_games()
-{
-	return games;
-}
-
-void TicTacToeManager::get_winner_totals(int & x, int & o, int & c)
-{
-	x = x_win;
-	o = o_win;
-	c = ties;
-}
-
-void TicTacToeManager::update_winner_count(string winner)
-{
-	if (winner == "X")
-	{
-		x_win++;
-	}
-	else if (winner == "O")
-	{
-		o_win++;
-	}
-	else
-	{
-		ties++;
-	}
-}
-

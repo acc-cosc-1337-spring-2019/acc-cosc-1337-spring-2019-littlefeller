@@ -1,40 +1,25 @@
 #ifndef TIC_TAC_TOE_MANAGER_H
 #define TIC_TAC_TOE_MANAGER_H
-
 #include "tic_tac_toe.h"
-#include <vector>
-using std::vector;
-
+#include<vector>
+#include<memory>
 //Write class interface here
 
-class TicTacToeManager
+class TicTacToeManager 
 {
-
 public:
-
-	TicTacToeManager() : x_win(0), o_win(0) { ties = 0;  }
-
-	void save_game(TicTacToe b);
-	//void display_history() const;
-
-	friend std::ostream & operator << (std::ostream & out,
-		const TicTacToeManager &t);
-
+	void save_game(std::unique_ptr<TicTacToe>& game);
+	std::unique_ptr<TicTacToe> get_game(GameType game_type);
 	const std::vector<std::unique_ptr<TicTacToe>>& get_games();
 	void get_winner_totals(int& x, int& o, int& c);
 
+	friend std::ostream & operator << (std::ostream & out,
+		const TicTacToeManager & t);
 private:
-	void update_winner_count(string winner);
+	std::vector<std::unique_ptr<TicTacToe>> games;
+	void update_winner_count(std::string winner);
 
-
-	vector<TicTacToe> games;
-	int x_win;
-	int o_win;
-	int ties;
-
-
-
-
+	int x_win{ 0 }, o_win{ 0 }, ties{ 0 };
 };
 
 #endif // !TIC_TAC_TOE_MANAGER_H
