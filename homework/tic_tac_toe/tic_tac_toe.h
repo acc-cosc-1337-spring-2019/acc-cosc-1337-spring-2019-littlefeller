@@ -28,6 +28,8 @@ public:
 	friend std::ostream & operator << (std::ostream & out,
 		const TicTacToe &t);
 
+	const std::vector<std::string>& get_pegs();
+
 protected:
 
 	virtual bool check_column_win();

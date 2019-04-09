@@ -60,9 +60,20 @@ std::istream & operator>>(std::istream & in, TicTacToe & t)
 std::ostream & operator<<(std::ostream & out, const TicTacToe & t)
 {
 
-	out << t.pegs[0] << "|" << t.pegs[1] << "|" << t.pegs[2] << "\n";
-	out << t.pegs[3] << "|" << t.pegs[4] << "|" << t.pegs[5] << "\n";
-	out << t.pegs[6] << "|" << t.pegs[7] << "|" << t.pegs[8] << "\n";
+	if (t.pegs.size() == 9)
+	{
+		out << t.pegs[0] << "|" << t.pegs[1] << "|" << t.pegs[2] << "\n";
+		out << t.pegs[3] << "|" << t.pegs[4] << "|" << t.pegs[5] << "\n";
+		out << t.pegs[6] << "|" << t.pegs[7] << "|" << t.pegs[8] << "\n";
+	}
+	else
+	{
+		out << t.pegs[0] << "|" << t.pegs[1] << "|" << t.pegs[2] << "|" << t.pegs[3] << "\n";
+		out << t.pegs[4] << "|" << t.pegs[5] << "|" << t.pegs[6] << "|" << t.pegs[7] << "\n";
+		out << t.pegs[8] << "|" << t.pegs[9] << "|" << t.pegs[10] << "|" << t.pegs[11] << "\n";
+		out << t.pegs[12] << "|" << t.pegs[13] << "|" << t.pegs[14] << "|" << t.pegs[15] << "\n";
+	}
+
 
 	return out;
 }
@@ -81,6 +92,11 @@ void TicTacToe::set_next_player()
 	{
 		next_player = "X";
 	}
+}
+
+const std::vector<std::string>& TicTacToe::get_pegs()
+{
+	return pegs;
 }
 
 bool TicTacToe::check_column_win()
