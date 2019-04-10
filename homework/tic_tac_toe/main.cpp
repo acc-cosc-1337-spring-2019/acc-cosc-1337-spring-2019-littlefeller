@@ -1,75 +1,49 @@
-#include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
-#include<string>
-#include<iostream>
-using std::cout;
-using std::cin;
+#include <string>
+#include <iostream>
 
-int main() 
+using std::cout; using std::cin;
+
+
+int main()
 {
-	
-	std::string play = "n";
+	std::string first;
+	char choice;
+	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
+	int game_choice;
 
-	TicTacToeManager g1;
+	std::unique_ptr<TicTacToe> tic_tac_toe;
 
-	do {
+	do
+	{
+		cout << "Tic tac toe 3 or 4: ";
+		cin >> game_choice;
 
-		TicTacToe *game1;
+		tic_tac_toe = manager->get_game((GameType)game_choice);
 
-		cout << "Do you want to play on a 3x3 or 4x4 board? (3 for 3x3, 4 for 4x4) ";
-		int board_size;
-		cin >> board_size;
+		cout << "First player: ";
+		cin >> first;
+		tic_tac_toe->start_game(first);
 
-		if (board_size == 3)
+		while (tic_tac_toe->game_over() == false)
 		{
-			game1 = new TicTacToe3();
-		}
-		else
-		{
-			game1 = new TicTacToe4();
+			cin >> *tic_tac_toe;
+			cout << *tic_tac_toe;
+			cout << "\n\n";
 		}
 
+		cout << "Winner: " << tic_tac_toe->get_winner();
 
+		manager->save_game(tic_tac_toe);
 
-		game1->start_game("X");
+		cout << "play again";
+		cin >> choice;
 
-		while (game1->game_over() != true)
-		{
-			
-			cin >> *game1;
+	} while (choice == 'y');
 
-			cout << *game1;
-
-			if (game1->game_over())
-			{
-				cout << "GAME OVER" << "\n";
-				break;
-			}
-
-			cin >> *game1;
-			cout << *game1;
-
-			if (game1->game_over())
-			{
-				cout << "GAME OVER" << "\n";
-				break;
-			}
-		}
-		
-		g1.save_game(*game1);
-		
-
-		cout << "\n";
-		cout << "Play again? (enter y to start another game) ";
-		cin >> play;
-
-	} while (play == "y");
-
-	cout << g1;
-
-	//g1.display_history();
+	cout << *manager;
 
 	return 0;
 }

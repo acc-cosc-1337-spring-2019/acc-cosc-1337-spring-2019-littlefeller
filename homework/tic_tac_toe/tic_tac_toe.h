@@ -11,7 +11,7 @@ enum GameType
 	four = 4
 };
 
-class TicTacToe 
+class TicTacToe
 {
 public:
 	TicTacToe(GameType game_type) : pegs(game_type * game_type, " ") {}
@@ -20,20 +20,16 @@ public:
 	bool game_over();
 	void mark_board(int position);
 	std::string get_winner()const;
-	const std::vector<std::string>& get_pegs();
-
 	friend std::ostream & operator << (std::ostream & out,
 		const TicTacToe & t);
 	friend std::istream & operator >> (std::istream & out,
 		TicTacToe & t);
 
-	const std::vector<std::string>& get_pegs();
-
 protected:
 	std::vector<std::string> pegs;
-	virtual bool check_column_win()=0;
-	virtual bool check_row_win()=0;
-	virtual bool check_diagonal_win()=0;
+	virtual bool check_column_win() = 0;
+	virtual bool check_row_win() = 0;
+	virtual bool check_diagonal_win() = 0;
 
 private:
 	std::string next_player;

@@ -2,10 +2,10 @@
 
 /*
 Win by column if and return true if (each column index)
-0, 1,  2,  3 
-4, 5,  6,  7 
-8, 9, 10, 11 
-12,13,14, 15 
+0, 1,  2,  3
+4, 5,  6,  7
+8, 9, 10, 11
+12,13,14, 15
 else
 false
 */
@@ -16,7 +16,7 @@ bool TicTacToe4::check_column_win()
 		if (pegs[i] == pegs[i + 4] && pegs[i + 4] == pegs[i + 8] &&
 			pegs[i + 8] == pegs[i + 12] && pegs[i] != " " &&
 			pegs[i + 12] != " ")
-			
+
 			return true;
 	}
 
@@ -26,7 +26,7 @@ bool TicTacToe4::check_column_win()
 Win by row if
 0, 1,  2,  3 are equal
 4, 5,  6,  7 are equal
-8, 9, 10, 11 are equal 
+8, 9, 10, 11 are equal
 12,13,14, 15 are equal
 */
 bool TicTacToe4::check_row_win()
@@ -36,7 +36,7 @@ bool TicTacToe4::check_row_win()
 		if (pegs[i] == pegs[i + 1] && pegs[i + 1] == pegs[i + 2] &&
 			pegs[i + 2] == pegs[i + 3] && pegs[i] != " " &&
 			pegs[i + 3] != " ")
-			
+
 			return true;
 	}
 
@@ -49,7 +49,6 @@ Win diagonally
 4, 5,  6,  7
 8, 9, 10, 11
 12,13,14, 15
-
 */
 bool TicTacToe4::check_diagonal_win()
 {
@@ -66,4 +65,3 @@ bool TicTacToe4::check_diagonal_win()
 
 	return false;
 }
-
