@@ -1,22 +1,19 @@
 #include "panel.h"
 #include<string>
-/*
+/* 
 Class Constructor
 1. STUDENT MUST WRITE CODE FOR THIS
-   Using make unique object, create a unique pointer to manager 
-
+   Using make unique object, create a unique pointer to manager
 2. STUDENT MUST WRITE CODE FOR THIS
    Call the manager get_games function and save games to a local const vector& reference
    Using auto& for loop, loop through each game and call the history list box Append
    function to add the string Game to it --> "Game"
-
 @param wxWindow* the parent window for the Panel class
 */
 Panel::Panel(wxWindow* parent)
 	: wxPanel(parent, -1)
 {
 	//1. Create unique pointer of TicTacToeManager
-	
 	manager = std::make_unique<TicTacToeManager>();
 
 	auto vbox = new wxBoxSizer(wxVERTICAL);
@@ -29,16 +26,16 @@ Panel::Panel(wxWindow* parent)
 	tic_tac_toe_grid_4->Show(false);
 
 	/*2.
-	Call the manager get_games function and save games to a local const vector& (of tictactoe) reference
-    Using auto& for loop, loop through each game and call the history list box Append
-    function to add the string Game to it --> "Game"*/
-	
+	Call the manager get_games function and save games to a local const vector& reference
+	Using auto& for loop, loop through each game and call the history list box Append
+	function to add the string Game to it --> "Game"*/
 	const std::vector<std::unique_ptr<TicTacToe>>& games = manager->get_games();
 
 	for (auto& g : games)
 	{
 		history_list_box->Append("Game");
 	}
+
 
 	vbox->Add(top_horizontal_box, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 10);
 	vbox->Add(mid_horizontal_box, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 10);
@@ -53,36 +50,31 @@ Panel::Panel(wxWindow* parent)
 /*
 Gets a board from the TicTacToeManager boards vector to update the peg button labels to show
 the final result of a previously played game.
-
 1) STUDENT MUST WRITE CODE FOR THIS
    Gets a reference to a vector of board using the get_games function
-   of the TicTacToeManager.   
-
+   of the TicTacToeManager.
 2) STUDENT MUST WRITE CODE FOR THIS
    Gets a reference to one board from the boards vector using the history_list_box
-   GetSelection function.     
-
+   GetSelection function.
 3) Determines if the current board is a TicTacToe3 and sets the sizer variable to
    a tic_tac_toe_grid_3 or 4 . DONE
 4) Iterates through the children of Tic tac toe 3 or 4 sizer updates the
    label and disables buttons. DONE
-
 5) STUDENT MUST WRITE CODE FOR THIS
-   Sets the winner_text value to the winner of the selected board. 
+   Sets the winner_text value to the winner of the selected board.
 */
 void Panel::on_list_box_click(wxCommandEvent& event)
 {
 	//STUDENT MUST WRITE CODE FOR THIS
 	//1) Write code to get a reference to a vector of boards by calling the manager get_games function
 	//Example const std::vector<std::unique_ptr<SomeClass>>& my_class_vector = other_class->get_classes()
-	//(replace with correct class names)
-
 	const std::vector<std::unique_ptr<TicTacToe>>& games = manager->get_games();
 
+
 	/*STUDENT MUST WRITE CODE FOR THIS
-	2) Write code to get a reference to one board using the history_list_box GetSelection function as 
+	2) Write code to get a reference to one board using the history_list_box GetSelection function as
 	   the index for the boards vector
-	   This means to get one board from the boards vector created in #1 above by passing in an index  
+	   This means to get one board from the boards vector created in #1 above by passing in an index
 	   The history list box can give you the index by calling its GetSelection function
 	   Use the Example from #1 above as guidance.
 	*/
@@ -118,7 +110,6 @@ void Panel::on_list_box_click(wxCommandEvent& event)
 	/*STUDENT MUST WRITE CODE FOR THIS
 	5)Call the winner_text SetValue function and pass the board get_winner() return value
 	as its parameter argument*/
-	
 	winner_text->SetValue(board->get_winner());
 
 	set_winner_labels();
@@ -128,17 +119,13 @@ void Panel::on_list_box_click(wxCommandEvent& event)
 /*
 Event function will execute each time the start button is clicked.
 1) Resets button labels and enables button for mouse clicks. DONE
-
 2) STUDENT MUST WRITE CODE FOR THIS
-     Gets a tic tac toe game from the TicTacToeManager class using the GameType enumeration
-     tic_tac_toe_3 or tic_tac_toe_4 options. 
-
+	 Gets a tic tac toe game from the TicTacToeManager class using the GameType enumeration
+	 tic_tac_toe_3 or tic_tac_toe_4 options.
 3) STUDENT MUST WRITE CODE FOR THIS
-   Shows and hides tic tac toe 3 or 4 depending on game_type_radio selection. 
-
+   Shows and hides tic tac toe 3 or 4 depending on game_type_radio selection.
 4) STUDENT MUST WRITE CODE FOR THIS
-   Check first_player_radio to determine whether X or O goes first. 
-
+   Check first_player_radio to determine whether X or O goes first.
 5) Disables the start button while a game is in progress.
 @parame wxCommandEvent wxWidget class stores the button that fired the event
 */
@@ -153,14 +140,13 @@ void Panel::on_start_button_click(wxCommandEvent & event)
 		2) Gets a tic tac toe game from the TicTacToeManager class using the
 		numbers 3 or 4 or the GameType enumeration GameType::three or GameType::four
 		tic_tac_toe_3 or tic_tac_toe_4 options.
-		
+
 		Set the class member variable board equal to the manager's get_game function result.
 		pass 3,4, or if you have my solution the values GameType::three or GameType::four
 		as parameter arguments to the get_game function
 		*/
-		
-		board = manager->get_game(3);
-		
+		board = manager->get_game(GameType::three);
+
 		tic_tac_toe_grid_4->Show(false);
 		tic_tac_toe_grid_3->Show(true);
 	}
@@ -169,21 +155,21 @@ void Panel::on_start_button_click(wxCommandEvent & event)
 		/*STUDENT MUST WRITE CODE FOR THIS
 		3) Gets a tic tac toe game from the TicTacToeManager class using the GameType enumeration
 		tic_tac_toe_3 or tic_tac_toe_4 options.
-		
+
 		Set the class member variable board equal to the manager's get_game function result.
 		pass 3,4, or if you have my solution the values GameType::three or GameType::four
 		as parameter arguments to the get_game function
 		*/
-		
-		board = manager->get_game(4);
-		
+		board = manager->get_game(GameType::four);
+
+
 		tic_tac_toe_grid_3->Show(false);
 		tic_tac_toe_grid_4->Show(true);
 	}
 
 	/*STUDENT MUST WRITE CODE FOR THIS
 	4) Check first_player_radio GetSelection function return value
-	    to determine whether X or O goes first. 
+		to determine whether X or O goes first.
 	   if radio button selection 0 call the board start game function with X or O
 	*/
 	if (first_player_radio->GetSelection() == 0)
@@ -195,6 +181,7 @@ void Panel::on_start_button_click(wxCommandEvent & event)
 		board->start_game("O");
 	}
 
+
 	auto btn = dynamic_cast<wxButton*>(event.GetEventObject());
 	btn->Disable();
 	this->Layout();
@@ -204,10 +191,9 @@ void Panel::on_start_button_click(wxCommandEvent & event)
 Executes each time a peg button is clicked.
 1) Disables clicked button.
 2) Gets the clicked position from the button.
-   
-3) STUDENT MUST WRITE CODE FOR THIS
-   Marks the board for TicTacToe instance 
 
+3) STUDENT MUST WRITE CODE FOR THIS
+   Marks the board for TicTacToe instance
 4) Checks if game over. When game over:
 	a) Update winner_text label with the winner text (X, O or C).
 	b) Add an entry to history_list_box.
@@ -225,7 +211,7 @@ void Panel::on_peg_button_click(wxCommandEvent & event)
 	/*
 	STUDENT MUST WRITE CODE FOR THIS
 	3. Update the button label with current player X or O
-	Call btn SetLabel function and pass the board's get_player function 
+	Call btn SetLabel function and pass the board's get_player function
 	return value as its parameter argument
 	Example: some_btn->SetLabel(my_class->some_function())
 	*/
@@ -254,7 +240,6 @@ Updates winner label totals
 STUDENT MUST WRITE CODE HERE
 1. Write code to call the manager get winner total and pass the x, o, and c variables as parameters
 2. Remove comment / * * / from function to execute commented out code
-
 */
 void Panel::set_winner_labels()
 {
@@ -269,12 +254,10 @@ void Panel::set_winner_labels()
 	STUDENT ACTION REQUIRED
 	Remove comments below to properly set labels
 	*/
-	
-	
+
 	x_winner_label->SetValue(std::to_string(x));
 	o_winner_label->SetValue(std::to_string(o));
 	c_winner_label->SetValue(std::to_string(c));
-	
 
 	this->Layout();
 }
