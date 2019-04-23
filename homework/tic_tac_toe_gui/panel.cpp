@@ -1,6 +1,6 @@
 #include "panel.h"
 #include<string>
-/* 
+/*
 Class Constructor
 1. STUDENT MUST WRITE CODE FOR THIS
    Using make unique object, create a unique pointer to manager
