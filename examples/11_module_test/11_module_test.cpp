@@ -22,8 +22,8 @@ TEST_CASE("Test function reference parameter")
 
 TEST_CASE("test class copy") {
 
-	Destructor a(10);
-	Destructor b = a;
+	RuleofFive a(10);
+	RuleofFive b = a;
 
 	REQUIRE(a.get_value() == 10);
 	REQUIRE(b.get_value() == 10);
@@ -37,8 +37,8 @@ TEST_CASE("test class copy") {
 
 TEST_CASE("test class copy dynamic private data") {
 
-	Destructor a(10);
-	Destructor b = a;
+	RuleofFive a(10);
+	RuleofFive b = a;
 
 	int* ptr = a.get_ptr_num();
 	int* ptr1 = b.get_ptr_num();

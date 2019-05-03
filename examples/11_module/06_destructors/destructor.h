@@ -3,8 +3,8 @@ class Destructor
 {
 public:
 	Destructor(int n) : num(n) { ptr_num = new int(n); }
-	Destructor(const Destructor& d);
-	Destructor& operator=(Destructor& d); //copy assignment - RULE OF 3
+	Destructor(const Destructor& d); // copy constructor - RULE OF 3
+	Destructor& operator=(Destructor& d); //copy assignment - RULE OF 3 (if any of the 3 exist, you need the other 2)
 	~Destructor(); // RULE OF 3
 	void set_value(int n);
 	int get_value();
